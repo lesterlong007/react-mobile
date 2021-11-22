@@ -1,0 +1,101 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-07-06 13:56
+*/
+.modalWrap {
+  width: 3.2rem;
+  border-radius: 0.06rem;
+  overflow: hidden;
+
+  :global {
+    .am-modal-content {
+      border-radius: 0.1rem;
+      overflow: hidden;
+      padding: 0.2rem;
+
+      .am-modal-header {
+        padding: 0 0 0.2rem;
+        border-bottom: 0.01rem solid #f1f1f2;
+      }
+
+      .am-modal-body {
+        padding: 0;
+      }
+      .am-modal-close-x {
+        width: 100%;
+        height: 100%;
+        background: url('/src/assets/images/modalCloseIcon.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    .ant-picker {
+      width: 100%;
+    }
+  }
+
+  .baseTitle {
+    font-size: 0.16rem;
+    font-weight: 500;
+    color: #111111;
+    line-height: 0.16rem;
+
+    .titleTips {
+      margin-left: 0.1rem;
+      font-size: 0.12rem;
+      color: #999aa1;
+      line-height: 0.12rem;
+    }
+  }
+  .motifyclosable {
+    position: absolute;
+    top: 0.15rem;
+    right: 0.15rem;
+    width: 0.24rem;
+    height: 0.24rem;
+    line-height: 0.24rem;
+    font-size: 0.24rem;
+    z-index: 9999;
+  }
+
+  .footerBtn {
+    padding-top: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.14rem;
+    border-top: 0.01rem solid #f1f1f2;
+
+    .cancel {
+      width: 1.3rem;
+      height: 0.36rem;
+      line-height: 0.36rem;
+      border-radius: 0.18rem;
+      border: 0.01rem solid #ccccd0;
+      color: #606366;
+      cursor: pointer;
+      background-color: white;
+      outline: none;
+    }
+
+    .ok {
+      margin-left: 0.2rem;
+      width: 1.3rem;
+      height: 0.36rem;
+      line-height: 0.36rem;
+      background-color: #318cf5;
+      border-radius: 0.18rem;
+      color: white;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .nook {
+      background-color: #ccccd0;
+      cursor: not-allowed;
+    }
+  }
+}

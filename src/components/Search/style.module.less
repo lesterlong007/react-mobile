@@ -1,0 +1,56 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-07-15 14:34
+*/
+
+.searchWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 0.34rem;
+  padding: 0 0.12rem;
+  background-color: #f7f7f8;
+  border-radius: 0.18rem;
+  border: 0.01rem solid #f7f7f8;
+  &.focus {
+    border: 0.01rem solid #318cf5;
+  }
+
+  .input {
+    margin-right: 0.1rem;
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 0.12rem;
+    line-height: 0.12rem;
+    color: #111111;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: #999aa1;
+    }
+  }
+
+  .leftSearchIcon,
+  .rightSearchIcon {
+    color: #999aa1;
+    font-size: 0.14rem;
+    margin-right: 0.1rem;
+  }
+  .rightSearchIcon {
+    margin-right: 0;
+  }
+
+  .clearIcon {
+    display: none;
+    margin-right: 0.06rem;
+    font-size: 0.16rem;
+
+    &.show {
+      display: inline-block;
+    }
+  }
+}

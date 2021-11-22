@@ -1,0 +1,37 @@
+.wrap {
+  height: 0.54rem;
+  line-height: 0.54rem;
+  font-size: 0.14rem;
+  padding: 0 0.14rem;
+  background: #ffffff;
+  border-radius: 0.1rem;
+  position: relative;
+  margin-bottom: 0.1rem;
+}
+
+.icon {
+  font-size: 0.16rem;
+  color: #ccccd0;
+}
+.title {
+  color: #999aa1;
+  span {
+    cursor: pointer;
+  }
+  &:last-child {
+    span {
+      color: #111;
+      cursor: default;
+    }
+    .icon {
+      display: none;
+    }
+  }
+
+  &:hover {
+    color: #111;
+  }
+  &.active {
+    color: #111;
+  }
+}
