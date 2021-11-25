@@ -13,7 +13,7 @@ import { routes, cacheRoutes } from 'src/pages/routes';
 import { loginAuth } from 'src/apis';
 import wxLoginAuth from 'src/utils/wxLoginAuth';
 import { getUrlQueryParam, getCookie } from 'src/utils/base';
-import { Loading, UserInfo } from 'src/components';
+import { Loading } from 'src/components';
 import DebugNav from './DebugNav';
 import './style.less';
 
@@ -78,7 +78,7 @@ const Layout: React.FC<RouteComponentProps> = ({ history }) => {
       window.localStorage.setItem('queryParam', JSON.stringify(queryParam));
     }
     const token = getCookie('2bad75be7f8e82b16dfba403b7eaf4a9');
-    if (token) {
+    if (!token) {
       setPageVisible(true);
     } else {
       const localCode = window.localStorage.getItem('code');
@@ -112,7 +112,6 @@ const Layout: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <>
-      {pageVisible && window.location.pathname !== '/tenacity-webapp-sidebar/marketingAssistant' && <UserInfo />}
       {pageVisible ? <Routes /> : <Loading />}
       <DebugNav />
     </>

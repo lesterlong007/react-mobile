@@ -24,7 +24,6 @@ import FastClick from 'fastclick';
   doc.addEventListener('DOMContentLoaded', reCalc, false);
 })(document, window);
 
-
 (function (doc: Document, win: Window) {
   doc.title = '\u200E';
 

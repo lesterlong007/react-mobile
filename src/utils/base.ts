@@ -54,37 +54,6 @@ export const getCookie: (key: string) => string = (key: string) => {
 };
 
 /**
- * 获取员工id
- */
-export const getStaffId: () => string = () => {
-  return window.localStorage.getItem('staffId') || '';
-};
-
-/**
- * 获取埋点上报公共参数
- */
-export const getReportParam: () => Object = () => {
-  const corpId: string = getUrlQueryParam('corpId');
-  const staffId: string = getStaffId();
-  const externalUserId: string = window.sessionStorage.getItem('externalUserId') || '';
-
-  return {
-    corpId,
-    staffId,
-    externalUserId,
-    fromType: 2
-  };
-};
-
-/**
- * 神策自定义埋点上报
- * @param param
- */
-export const saCustomReport: (param: Object) => void = (param) => {
-  window.$sensors.track('custom_event', { ...getReportParam(), ...param });
-};
-
-/**
  * 匹配字符串中的换行符
  * @param str string
  * @return string
@@ -98,15 +67,6 @@ export const replaceEnter = (str: string): string => {
  * 屏幕大小比例
  */
 export const screenRate = (document.body.clientWidth || document.body.clientWidth || window.innerWidth || 360) / 360;
-/**
- * 字符串替换
- * @param str
- * @param nickName
- * @param remark
- */
-export const replaceStr = (str: string, nickName: string, remark: string): string => {
-  return str.replace(/\[用户昵称\]/g, nickName).replace(/\[备注名\]/g, remark);
-};
 
 /**
  * 防抖
@@ -152,67 +112,3 @@ export const lazyLoadImg = (): void => {
  * 判断浏览器是否支持IntersectionObserver
  */
 export const supportLazy = 'IntersectionObserver' in window;
-
-interface FormatObj {
-  [key: string]: string;
-}
-// 解析消息内容字符串
-export function parseMessage (str: string, parmaFormatObj?: FormatObj): string {
-  const defaultFormatObj = {};
-  const formatObj: FormatObj = { ...defaultFormatObj, ...parmaFormatObj };
-  let resStr = '';
-  if (str.length > 0 && str.indexOf('[') < 0) {
-    // 村文本
-    resStr = str;
-    return resStr;
-  }
-  let subStr = '';
-  while (str.indexOf('[') >= 0) {
-    const startIndex = str.indexOf('[');
-    const endIndex = str.indexOf(']');
-    if (str.indexOf('[') === 0) {
-      const code = str.substring(startIndex + 1, endIndex);
-      if (formatObj[code]) {
-        resStr += formatObj[code] || '';
-      } else {
-        resStr += `<span style="color: #318cf5">「${code}」</span>`;
-      }
-      str = str.substring(endIndex + 1);
-    } else {
-      subStr = str.substring(0, startIndex);
-      resStr += subStr;
-      str = str.substring(startIndex);
-    }
-  }
-  return resStr + str;
-}
-
-export const parseMessageToText = (str: string, parmaFormatObj?: FormatObj): string => {
-  const defaultFormatObj = {};
-  const formatObj: FormatObj = { ...defaultFormatObj, ...parmaFormatObj };
-  let resStr = '';
-  if (str.length > 0 && str.indexOf('[') < 0) {
-    // 村文本
-    resStr = str;
-    return resStr;
-  }
-  let subStr = '';
-  while (str.indexOf('[') >= 0) {
-    const startIndex = str.indexOf('[');
-    const endIndex = str.indexOf(']');
-    if (str.indexOf('[') === 0) {
-      const code = str.substring(startIndex + 1, endIndex);
-      if (formatObj[code]) {
-        resStr += formatObj[code] || '';
-      } else {
-        resStr += `「${code}」`;
-      }
-      str = str.substring(endIndex + 1);
-    } else {
-      subStr = str.substring(0, startIndex);
-      resStr += subStr;
-      str = str.substring(startIndex);
-    }
-  }
-  return resStr + str;
-};

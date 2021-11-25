@@ -90,9 +90,9 @@ module.exports = function () {
       main: path.resolve(ROOT_PATH, './src/index.tsx')
     },
     output: {
-      path: path.resolve(ROOT_PATH, './tenacity-webapp-sidebar'),
+      path: path.resolve(ROOT_PATH, './react-mobile'),
       filename: 'js/[name].[chunkhash:8].bundle.js',
-      publicPath: isDev ? '/' : '/tenacity-webapp-sidebar/'
+      publicPath: isDev ? '/' : '/react-mobile/'
       // publicPath: isDev ? '/' : './'
     },
     mode: NODE_ENV || 'production',

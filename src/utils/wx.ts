@@ -3,9 +3,8 @@
  * @author Lester
  * @date 2021-05-21 10:44
  */
-import { Toast } from 'antd-mobile-v5';
+import { Toast } from 'antd-mobile';
 import { getConfigParam } from 'src/apis';
-import { getAutoParams } from 'src/apis/salesCollection';
 import { getUrlQueryParam } from 'src/utils/base';
 
 type ConfigFC = (apiList: string[]) => Promise<any>;
@@ -106,26 +105,4 @@ export const getExternalUserId = (): Promise<any> => {
       });
     }
   });
-};
-
-export const getCustomParamsByUserId = async (): Promise<any> => {
-  // const externalUserId = await getExternalUserId();
-  const customParams = JSON.parse(window.sessionStorage.getItem('customParams') || '{}');
-  if (Object.keys(customParams).length > 0) {
-    return Promise.resolve(customParams);
-  } else {
-    const externalUserId = await getExternalUserId();
-    const res = await getAutoParams({ externalUserId });
-    if (res) {
-      const list = res.list || [];
-      const params: { [key: string]: string } = {};
-      list.forEach((item: any) => {
-        params[item.paramCode] = item.paramValue;
-      });
-      window.sessionStorage.setItem('customParams', JSON.stringify(params || '{}'));
-      return Promise.resolve(params);
-    } else {
-      Toast.show('获取动态参数失败，请刷新重试');
-    }
-  }
 };

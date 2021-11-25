@@ -17,7 +17,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const { merge } = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
 
-const PORT = parseInt(process.env.PORT, 10) || 8088;
+const PORT = parseInt(process.env.PORT, 10) || 8888;
 const HOST = process.env.HOST || 'localhost';
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 

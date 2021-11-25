@@ -13,14 +13,12 @@ import NoPermission from 'src/pages/NoPermission/NoPermission';
 const App: React.FC = () => {
   return (
     <Context>
-      <div style={{ maxWidth: '3.6rem', margin: '0 auto', height: '100%' }}>
-        <Router basename="/tenacity-webapp-sidebar">
-          <Switch>
-            <Route exact path="/noPermission" component={NoPermission} />
-            <Route path="/" component={Layout} />
-          </Switch>
-        </Router>
-      </div>
+      <Router basename="/react-mobile">
+        <Switch>
+          <Route exact path="/noPermission" component={NoPermission} />
+          <Route path="/" component={Layout} />
+        </Switch>
+      </Router>
     </Context>
   );
 };

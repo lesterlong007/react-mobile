@@ -5,7 +5,6 @@
  */
 
 import http from 'src/utils/http';
-import { getReportParam } from 'src/utils/base';
 
 type HttpFunction = (param: Object) => Promise<any>;
 
@@ -46,7 +45,6 @@ export const getPhoneIdentifier: HttpFunction = (param: Object) => {
  */
 export const report: HttpFunction = (param: Object) => {
   return http.post('/tenacity-webapp/api/data/report', {
-    ...getReportParam(),
     ...param
   });
 };
