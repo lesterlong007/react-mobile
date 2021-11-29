@@ -10,6 +10,49 @@
   font-size: 0.2rem;
   font-weight: bold;
 
+  .svgWrap {
+    width: 2.2rem;
+    height: 2.2rem;
+
+    .circle {
+      stroke-width: 0.1rem;
+      stroke-dasharray: 6.3rem;
+      animation: move 4s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        stroke: royalblue;
+        stroke-dashoffset: 6.3rem;
+      }
+
+      50% {
+        stroke: mediumvioletred;
+        stroke-dashoffset: 3.2rem;
+      }
+
+      100% {
+        stroke: gold;
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .line {
+      animation: rotate 4s linear infinite;
+
+      @keyframes rotate {
+        from {
+          transform: rotateX(0);
+          stroke-width: 1px;
+        }
+        to {
+          transform: rotateX(90deg);
+          stroke-width: 100px;
+        }
+      }
+    }
+  }
+
   .icon {
     font-size: 0.3rem;
     color: blue;

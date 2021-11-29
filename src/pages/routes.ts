@@ -12,6 +12,10 @@ export const routes: RouteProps[] = [
   {
     path: '/index',
     component: lazy(() => import('src/pages/Index/Index'))
+  },
+  {
+    path: '/canvas',
+    component: lazy(() => import('src/pages/Canvas/Canvas'))
   }
 ];
 

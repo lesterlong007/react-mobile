@@ -77,7 +77,7 @@ const Layout: React.FC<RouteComponentProps> = ({ history }) => {
     if (queryParam.corpId && queryParam.agentId) {
       window.localStorage.setItem('queryParam', JSON.stringify(queryParam));
     }
-    const token = getCookie('2bad75be7f8e82b16dfba403b7eaf4a9');
+    const token = getCookie('2bad75be7f8e82b16dfba403b7eaf4a9123');
     if (!token) {
       setPageVisible(true);
     } else {

@@ -17,3 +17,4 @@ export { default as Empty } from './Empty/Empty';
 export { default as Modal } from './Modal/Modal';
 export { default as TagEmpty } from './TagEmpty/TagEmpty';
 export { default as ImgPreview } from './ImgPreview/ImgPreview';
+export { default as Skeleton } from './Skeleton/Skeleton';
