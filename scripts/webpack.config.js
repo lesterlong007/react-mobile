@@ -70,9 +70,7 @@ const getBabelLoader = (isTs = false) => {
     loader: 'babel-loader',
     options: {
       plugins: [
-        ['import', { libraryName: 'antd-mobile', style: 'css' }],
-        '@babel/plugin-transform-arrow-functions',
-        '@babel/plugin-proposal-class-properties'
+        ['import', { libraryName: 'antd-mobile', style: 'css' }]
       ]
     }
   };
