@@ -1,0 +1,337 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-12-25 15:40
+*/
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 106px 0 94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('src/assets/images/mall/lottery_bg.jpg') no-repeat center;
+  background-size: 100% 100%;
+
+  .turnWrap {
+    display: flex;
+    justify-content: center;
+    width: 589px;
+    height: 727px;
+    padding-top: 65px;
+    background: url('src/assets/images/mall/turntable.png') no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  .turntableWrap {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    z-index: 30;
+
+    .goLottery {
+      width: 144px;
+      height: 189px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -61.6%);
+
+      cursor: pointer;
+      z-index: 40;
+      background: url('src/assets/images/mall/pointer.png') no-repeat center;
+      background-size: 100% 100%;
+
+      .needMall {
+        position: absolute;
+        left: 50%;
+        bottom: 45px;
+        transform: translateX(-50%);
+        font-size: 12px;
+        color: #bb4700;
+        line-height: 12px;
+        text-shadow: 0 2px 0 #ffe6a0;
+      }
+    }
+
+    .turnContainer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      //transition: transform 2s ease-out;
+    }
+
+    .turntable {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #ffde77;
+      z-index: 30;
+
+      &.turning {
+        animation: goTurn 1.5s linear 2;
+
+        @keyframes goTurn {
+          0% {
+            transform: rotate(0);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+
+      .prizeItem {
+        padding-top: 15px;
+        position: absolute;
+        left: 140px;
+        width: 200px;
+        height: 240px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform-origin: 50% 100%;
+        z-index: 10;
+
+        .prizeName {
+          font-size: 14px;
+          color: #fff4f4;
+          line-height: 14px;
+          text-shadow: 0 2px 2px #a80000;
+        }
+
+        .prizeImg {
+          margin-top: 30px;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .btnWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .btn {
+      position: relative;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      line-height: 20px;
+      padding: 10px 39px;
+      background: linear-gradient(180deg, #ffd827 0%, #fe7700 58%, #f24242 100%);
+      border-radius: 23px;
+      border: none;
+      cursor: pointer;
+      z-index: 100;
+
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: -2px;
+        left: 5px;
+        width: 148px;
+        height: 8px;
+        background-color: #d27d54;
+        filter: blur(4px);
+        z-index: 50;
+      }
+    }
+
+    .btn + .btn {
+      margin-left: 40px;
+    }
+  }
+
+  .outCircle {
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 10;
+    background-color: #a80000;
+
+    .sectorItem {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 50%;
+      transform-origin: 0 100%;
+
+      &.oddColor {
+        background-color: #a80000;
+      }
+
+      &.evenColor {
+        background-color: #ee504f;
+      }
+    }
+
+    .inCircle {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 20;
+      background-color: #da4545;
+
+      .sectorItem {
+        &.oddColor {
+          background-color: #da4545;
+        }
+
+        &.evenColor {
+          background-color: #ef7770;
+        }
+      }
+    }
+  }
+}
+
+.lotteryResultWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  animation: show 0.2s ease;
+
+  @keyframes show {
+    from {
+      transform: scale(0);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .content {
+    position: relative;
+    width: 508px;
+    height: 508px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .closeIcon {
+      position: absolute;
+      right: 20px;
+      top: 70px;
+      font-size: 34px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .lightImg {
+      width: 80%;
+      position: absolute;
+      animation: lightRotate 3s linear infinite;
+
+      @keyframes lightRotate {
+        from {
+          transform: rotate(0);
+        }
+
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    }
+
+    .imgWrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+
+      .starImg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .light {
+        position: absolute;
+        left: -65px;
+        top: 2px;
+        width: 142px;
+        height: 20px;
+        background-color: white;
+        transform: rotate(-45deg);
+        animation: move 0.6s ease infinite;
+        opacity: 0.5;
+
+        @keyframes move {
+          from {
+            left: -65px;
+            top: 2px;
+          }
+
+          to {
+            left: 35px;
+            top: 80px;
+          }
+        }
+      }
+    }
+
+    .footerWrap {
+      position: absolute;
+      bottom: 60px;
+      text-align: center;
+
+      .comfortText {
+        font-size: 26px;
+        font-weight: bold;
+        color: white;
+        line-height: 26px;
+      }
+    }
+
+    .lotteryResName {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffd962;
+      line-height: 26px;
+    }
+
+    .lotteryResDesc {
+      margin-top: 10px;
+      font-size: 14px;
+      color: white;
+      line-height: 14px;
+    }
+
+    .lotteryResBtn {
+      margin-top: 20px;
+      width: 120px;
+      height: 40px;
+      background-color: @primary-color;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      line-height: 40px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
