@@ -1,0 +1,266 @@
+/**
+* @name style.module
+* @author Lester
+* @date 2021-12-14 14:04
+*/
+
+.wrap {
+  width: 100%;
+
+  .videoWrap {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-width: 600px;
+    user-select: none;
+    overflow: hidden;
+
+    &:hover {
+      .controlWrap {
+        bottom: 0;
+      }
+    }
+
+    .video {
+      width: 100%;
+    }
+
+    .controlWrap {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.1);
+      z-index: 666;
+      bottom: 0;
+      //bottom: -60px;
+      transition: bottom 0.3s;
+
+      &.fullScreen {
+        height: 100px;
+
+        .progressWrap {
+          height: 8px;
+        }
+
+        .btnCircle {
+          width: 42px;
+          height: 42px;
+
+          .playIcon {
+            font-size: 22px;
+          }
+
+          .btnText {
+            font-size: 16px;
+          }
+        }
+
+        .left {
+          .currentTime {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .progressWrap {
+        flex: none;
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 5px;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        border-radius: 2px;
+
+        .progressPlay {
+          position: relative;
+          height: 100%;
+          background-color: @primary-color;
+          border-radius: 2px;
+          z-index: 888;
+
+          .processDot {
+            display: inline-block;
+            position: absolute;
+            right: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 999;
+
+            &:hover {
+              box-shadow: 0 0 5px 5px @primary-color;
+            }
+          }
+        }
+
+        .progressBuffer {
+          position: absolute;
+          left: 0;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.4);
+          border-radius: 2px;
+          transition: width 0.2s;
+        }
+      }
+
+      .controlContent {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left {
+        display: inline-flex;
+        align-items: center;
+
+        .currentTime {
+          margin-left: 8px;
+          letter-spacing: 1px;
+          color: white;
+        }
+      }
+
+      .right {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .btnCircle {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+        .btnText {
+          font-size: 13px;
+          color: white;
+        }
+
+        .playIcon {
+          font-size: 18px;
+          cursor: pointer;
+          color: white;
+          transition: transform 0.2s;
+        }
+
+        .rateList {
+          position: absolute;
+          top: -200px;
+          width: 100px;
+          height: 200px;
+          padding: 20px;
+          z-index: 999;
+          background-color: rgba(0, 0, 0, 0.8);
+          border-radius: 10px;
+          transform: scale(0);
+          transition: transform 0.2s;
+          overflow: hidden;
+
+          .rateItem {
+            padding: 5px;
+            text-align: center;
+            color: white;
+            transition: transform 0.2s;
+
+            &:hover {
+              transform: scale(1.2);
+            }
+
+            &.active {
+              color: @primary-color;
+            }
+          }
+        }
+
+        .soundWrap {
+          position: absolute;
+          top: -140px;
+          width: 40px;
+          height: 140px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: rgba(0, 0, 0, 0.8);
+          border-radius: 10px;
+          color: white;
+          transform: scale(0);
+          transition: transform 0.2s;
+          z-index: 888;
+
+          .soundBar {
+            display: flex;
+            align-items: flex-end;
+            width: 6px;
+            height: 100px;
+            background-color: white;
+            border-radius: 10px;
+
+            .soundVal {
+              position: relative;
+              width: 6px;
+              height: 0;
+              background-color: @primary-color;
+              border-radius: 10px;
+
+              .soundDot {
+                position: absolute;
+                top: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                content: '';
+                width: 12px;
+                height: 12px;
+                background-color: white;
+                border-radius: 50%;
+                z-index: 999;
+
+                &:hover {
+                  box-shadow: 0 0 5px 5px @primary-color;
+                }
+              }
+            }
+          }
+        }
+
+        &:hover {
+          .playIcon {
+            transform: scale(1.2);
+            color: @primary-color;
+          }
+
+          .btnText {
+            color: @primary-color;
+          }
+
+          .rateList,
+          .soundWrap {
+            transform: scale(1);
+          }
+        }
+      }
+
+      .btnCircle + .btnCircle {
+        margin-left: 8px;
+      }
+    }
+  }
+}
